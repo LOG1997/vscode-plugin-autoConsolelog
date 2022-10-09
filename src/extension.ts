@@ -30,7 +30,6 @@ export function activate(context: vscode.ExtensionContext) {
     const clipboardText = await clipboard.readText().then((res) => {
       return Promise.resolve(res);
     });
-    console.log("clibptord:", clipboardText);
     if (selection.start === selection.end) {
       text = clipboardText;
     } else {
@@ -38,7 +37,7 @@ export function activate(context: vscode.ExtensionContext) {
     }
     // 向编辑器插入一行
     vscode.commands.executeCommand("editor.action.insertLineAfter").then(() => {
-      const logText = `console.log('${text}:',${text})`;
+      const logText = `console.log('😉${text}:',${text})`;
       // 在插入的空白行插入文本
       insertText(logText);
     });
