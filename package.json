@@ -17,7 +17,7 @@
     "onCommand:clog.clog"
   ],
   "main": "./dist/extension.js",
-  "publisher ": "log1997",
+  "publisher": "log1997",
   "repository": {
     "url": "https://github.com/LOG1997/vscode-plugin-autoConsolelog"
   },
