@@ -1,8 +1,31 @@
 // The module 'vscode' contains the VS Code extensibility API
 // Import the module and reference it with the alias vscode in your code below
 import * as vscode from "vscode";
-// 插入console函数
-
+import { entitiestoUtf16 } from "./utils/emoji";
+const emojiArr = [
+  "\u{1f600}",
+  "\u{1f601}",
+  "\u{1f602}",
+  "\u{1f603}",
+  "\u{1f604}",
+  "\u{1f605}",
+  "\u{1f606}",
+  "\u{1f607}",
+  "\u{1f608}",
+  "\u{1f609}",
+  "\u{1f60A}",
+  "\u{1f60B}",
+  "\u{1f60C}",
+  "\u{1f60D}",
+  "\u{1f60E}",
+  "\u{1f60F}",
+  "\u{1f610}",
+  "\u{1f611}",
+  "\u{1f612}",
+  "\u{1f613}",
+  "\u{1f614}",
+  "\u{1f615}",
+];
 const insertText = (text: any) => {
   const editor = vscode.window.activeTextEditor;
   if (!editor) {
@@ -36,8 +59,10 @@ export function activate(context: vscode.ExtensionContext) {
       text = editor.document.getText(selection);
     }
     // 向编辑器插入一行
+    let emojiIndex = Math.floor(Math.random() * emojiArr.length);
     vscode.commands.executeCommand("editor.action.insertLineAfter").then(() => {
-      const logText = `console.log('😉${text}:',${text})`;
+      const emojiData = entitiestoUtf16(emojiArr[emojiIndex]);
+      const logText = `console.log('${emojiData}${text}:',${text})`;
       // 在插入的空白行插入文本
       insertText(logText);
     });
