@@ -12,13 +12,11 @@ const extArr: any = {
 export function setInsertText(line: number | string = '', ext: string = '', emoji: string = '', text: string = '') {
     console.log('😉ext:', ext);
     const insertText = extArr[ext] || extArr['js'];
-    if (ext == 'js' || ext == 'ts' || ext == 'jsx' || ext == 'tsx') {
-        const color1 = 'color:red;background:#ffffff;padding:1px 2px;';
-        const color2 = 'color:green;background:#efefef;';
-        return `${insertText}("%c code line-${line} %c \\n\\r${emoji} ${text}:\\n\\r","${color1}","${color2}",${text});`;
+    if (ext === 'js' || ext === 'ts' || ext === 'jsx' || ext === 'tsx') {
+        return `${insertText}("code line-${line} \\n\\r${emoji} ${text}:\\n\\r",${text});`;
     }
-    if (ext == 'rs') {
-        return `${insertText}("code line-${line} ${emoji} ${text}:\\n\\r{}",${text});`;
+    if (ext === 'rs') {
+        return `${insertText}("code line-${line} ${emoji} ${text}:\\n\\r{:?}",${text});`;
     }
     return `${insertText}("code line-${line}${emoji} ${text}:",${text})`;
 }
