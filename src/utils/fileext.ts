@@ -12,7 +12,7 @@ const extArr: any = {
 export function setInsertText(line: number | string = '', ext: string = '', emoji: string = '', text: string = '') {
     console.log('😉ext:', ext);
     const insertText = extArr[ext] || extArr['js'];
-    if (ext === 'js' || ext === 'ts' || ext === 'jsx' || ext === 'tsx') {
+    if (ext === 'js' || ext === 'ts' || ext === 'jsx' || ext === 'tsx' || ext === 'vue') {
         return `${insertText}("code line-${line} \\n\\r${emoji} ${text}:\\n\\r",${text});`;
     }
     if (ext === 'rs') {
